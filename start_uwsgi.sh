@@ -1,0 +1,12 @@
+uwsgi --chdir=/Users/jeenhyung-mac/develop/infinyx/corona_project \
+    --module=mysite.wsgi:application \
+    --env DJANGO_SETTINGS_MODULE=mysite.settings \
+    --master --pidfile=/Users/jeenhyung-mac/develop/infinyx/corona_project/uwsgi.pid \
+    --socket=127.0.0.1:49152 \      # can also be a file
+    --processes=5 \                 # number of worker processes
+    --uid=1000 --gid=2000 \         # if root, uwsgi can drop privileges
+    --harakiri=20 \                 # respawn processes taking more than 20 seconds
+    --max-requests=5000 \           # respawn processes after serving 5000 requests
+    --vacuum \                      # clear environment on exit
+    --home=/path/to/virtual/env \   # optional path to a virtual environment
+    --daemonize=/Users/jeenhyung-mac/develop/infinyx/corona_project/uwsgi.log      # background the process
