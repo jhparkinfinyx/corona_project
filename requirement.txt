@@ -1,3 +1,4 @@
 django
 djangorestframework
 pandas
+django-cors-headers
