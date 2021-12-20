@@ -39,6 +39,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'corona_model.apps.CoronaModelConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,11 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders'
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,7 +137,11 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# CORS_ORIGIN_WHITELIST = False
+CORS_ORIGIN_WHITELIST = True
+
 CORS_ORIGIN_WHITELIST = (
-    "http://localhost"
+    u'http://127.0.0.1:8000',
+    u'http://127.0.0.1:80',
 )
+
+CORS_ALLOW_CREDENTIALS = True
